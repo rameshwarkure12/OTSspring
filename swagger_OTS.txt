@@ -1,0 +1,1446 @@
+swagger: '2.0'
+info:
+  description: Api Documentation
+  version: '1.0'
+  title: Api Documentation
+  termsOfService: urn:tos
+  contact: {}
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0
+host: localhost:8080
+basePath: /OTS_WebApp
+tags:
+  - name: admin-rest-controller
+    description: Admin Rest Controller
+  - name: question-rest-controller
+    description: Question Rest Controller
+  - name: quiz-rest-controller
+    description: Quiz Rest Controller
+  - name: result-rest-controller
+    description: Result Rest Controller
+  - name: student-controller
+    description: Student Controller
+  - name: student-rest-controller
+    description: Student Rest Controller
+  - name: subject-rest-controller
+    description: Subject Rest Controller
+paths:
+  /admin/alladmin:
+    get:
+      tags:
+        - admin-rest-controller
+      summary: allAdmin
+      operationId: allAdminUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Admin'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /admin/byIdAdmin/{adid}:
+    get:
+      tags:
+        - admin-rest-controller
+      summary: getByIdEmployee
+      operationId: getByIdEmployeeUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: adid
+          in: path
+          description: adid
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /admin/createAdmin:
+    post:
+      tags:
+        - admin-rest-controller
+      summary: createAdmin
+      operationId: createAdminUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: admin
+          description: admin
+          required: true
+          schema:
+            $ref: '#/definitions/Admin'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Admin'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /admin/deleteAdmin/{adid}:
+    delete:
+      tags:
+        - admin-rest-controller
+      summary: updateAdmin
+      operationId: updateAdminUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: adid
+          in: path
+          description: adid
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+  /admin/updateAdmin:
+    put:
+      tags:
+        - admin-rest-controller
+      summary: updateAdmin
+      operationId: updateAdminUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: admin
+          description: admin
+          required: true
+          schema:
+            $ref: '#/definitions/Admin'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /delete:
+    get:
+      tags:
+        - student-controller
+      summary: delete
+      operationId: deleteUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: dob
+          in: query
+          required: false
+          type: string
+          format: date-time
+        - name: st_contact
+          in: query
+          required: false
+          type: string
+        - name: st_email
+          in: query
+          required: false
+          type: string
+        - name: st_firstName
+          in: query
+          required: false
+          type: string
+        - name: st_gender
+          in: query
+          required: false
+          type: string
+        - name: st_id
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: st_lastName
+          in: query
+          required: false
+          type: string
+        - name: st_password
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ModelAndView'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /edit:
+    get:
+      tags:
+        - student-controller
+      summary: edit
+      operationId: editUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: dob
+          in: query
+          required: false
+          type: string
+          format: date-time
+        - name: st_contact
+          in: query
+          required: false
+          type: string
+        - name: st_email
+          in: query
+          required: false
+          type: string
+        - name: st_firstName
+          in: query
+          required: false
+          type: string
+        - name: st_gender
+          in: query
+          required: false
+          type: string
+        - name: st_id
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: st_lastName
+          in: query
+          required: false
+          type: string
+        - name: st_password
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ModelAndView'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /loginpage:
+    get:
+      tags:
+        - student-controller
+      summary: login
+      operationId: loginUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ModelAndView'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /question/allquestion:
+    get:
+      tags:
+        - question-rest-controller
+      summary: allQuestion
+      operationId: allQuestionUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Question'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /question/allquestion/{quid}:
+    get:
+      tags:
+        - question-rest-controller
+      summary: getByIdQuiz
+      operationId: getByIdQuizUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: quid
+          in: path
+          description: quid
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /question/byIdQuestion/{qid}:
+    get:
+      tags:
+        - question-rest-controller
+      summary: getByIdQuestion
+      operationId: getByIdQuestionUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: qid
+          in: path
+          description: qid
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /question/createQuestion:
+    post:
+      tags:
+        - question-rest-controller
+      summary: createQuestion
+      operationId: createQuestionUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: question
+          description: question
+          required: true
+          schema:
+            $ref: '#/definitions/Question'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Question'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /question/deleteQuestion/{qid}:
+    delete:
+      tags:
+        - question-rest-controller
+      summary: updateQuestion
+      operationId: updateQuestionUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: qid
+          in: path
+          description: qid
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+  /question/updateQuestion:
+    put:
+      tags:
+        - question-rest-controller
+      summary: updateQuestion
+      operationId: updateQuestionUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: question
+          description: question
+          required: true
+          schema:
+            $ref: '#/definitions/Question'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /quiz/allquiz:
+    get:
+      tags:
+        - quiz-rest-controller
+      summary: allQuiz
+      operationId: allQuizUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Quiz'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /quiz/allquiz/{subid}:
+    get:
+      tags:
+        - quiz-rest-controller
+      summary: getByIdSubject
+      operationId: getByIdSubjectUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: subid
+          in: path
+          description: subid
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /quiz/byIdQuiz/{qid}:
+    get:
+      tags:
+        - quiz-rest-controller
+      summary: getByIdEmployee
+      operationId: getByIdEmployeeUsingGET_1
+      produces:
+        - '*/*'
+      parameters:
+        - name: qid
+          in: path
+          description: qid
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /quiz/createQuiz:
+    post:
+      tags:
+        - quiz-rest-controller
+      summary: createQuiz
+      operationId: createQuizUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: quiz
+          description: quiz
+          required: true
+          schema:
+            $ref: '#/definitions/Quiz'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Quiz'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /quiz/deleteQuiz/{qid}:
+    delete:
+      tags:
+        - quiz-rest-controller
+      summary: updateQuiz
+      operationId: updateQuizUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: qid
+          in: path
+          description: qid
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+  /quiz/updateQuiz:
+    put:
+      tags:
+        - quiz-rest-controller
+      summary: updateQuiz
+      operationId: updateQuizUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: quiz
+          description: quiz
+          required: true
+          schema:
+            $ref: '#/definitions/Quiz'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /register:
+    post:
+      tags:
+        - student-controller
+      summary: signup
+      operationId: signupUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: txtcity
+          in: query
+          description: txtcity
+          required: true
+          type: string
+        - name: txtcontact
+          in: query
+          description: txtcontact
+          required: true
+          type: string
+        - name: txtemail
+          in: query
+          description: txtemail
+          required: true
+          type: string
+        - name: txtfename
+          in: query
+          description: txtfename
+          required: true
+          type: string
+        - name: txtgender
+          in: query
+          description: txtgender
+          required: true
+          type: string
+        - name: txthouseno
+          in: query
+          description: txthouseno
+          required: true
+          type: integer
+          format: int32
+        - name: txtlename
+          in: query
+          description: txtlename
+          required: true
+          type: string
+        - name: txtpassword
+          in: query
+          description: txtpassword
+          required: true
+          type: string
+        - name: txtpincode
+          in: query
+          description: txtpincode
+          required: true
+          type: integer
+          format: int32
+        - name: txtstate
+          in: query
+          description: txtstate
+          required: true
+          type: string
+        - name: txtstreet
+          in: query
+          description: txtstreet
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ModelAndView'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /registerpage:
+    get:
+      tags:
+        - student-controller
+      summary: register
+      operationId: registerUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ModelAndView'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /result/addresult:
+    post:
+      tags:
+        - result-rest-controller
+      summary: createResult
+      operationId: createResultUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: result
+          description: result
+          required: true
+          schema:
+            $ref: '#/definitions/Result'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Result'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /result/allresult:
+    get:
+      tags:
+        - result-rest-controller
+      summary: allResult
+      operationId: allResultUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Result'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /result/byIdResult/{rid}:
+    get:
+      tags:
+        - result-rest-controller
+      summary: getByIdResult
+      operationId: getByIdResultUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: rid
+          in: path
+          description: rid
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /result/deleteResult/{rid}:
+    delete:
+      tags:
+        - result-rest-controller
+      summary: updateResult
+      operationId: updateResultUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: rid
+          in: path
+          description: rid
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+  /search:
+    get:
+      tags:
+        - student-controller
+      summary: search
+      operationId: searchUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: txteid
+          in: query
+          description: txteid
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ModelAndView'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /signin:
+    get:
+      tags:
+        - student-controller
+      summary: signin
+      operationId: signinUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: txtemail
+          in: query
+          description: txtemail
+          required: true
+          type: string
+        - name: txtpassword
+          in: query
+          description: txtpassword
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ModelAndView'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /student/allstu:
+    get:
+      tags:
+        - student-rest-controller
+      summary: allStudent
+      operationId: allStudentUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Student'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /student/byIdStudent/{stid}:
+    get:
+      tags:
+        - student-rest-controller
+      summary: getByIdEmployee
+      operationId: getByIdEmployeeUsingGET_2
+      produces:
+        - '*/*'
+      parameters:
+        - name: stid
+          in: path
+          description: stid
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /student/createStudent:
+    post:
+      tags:
+        - student-rest-controller
+      summary: createStudent
+      operationId: createStudentUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: student
+          description: student
+          required: true
+          schema:
+            $ref: '#/definitions/Student'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Student'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /student/deleteStudent/{stid}:
+    delete:
+      tags:
+        - student-rest-controller
+      summary: updateStudent
+      operationId: updateStudentUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: stid
+          in: path
+          description: stid
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+  /student/updateStudent:
+    put:
+      tags:
+        - student-rest-controller
+      summary: updateStudent
+      operationId: updateStudentUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: student
+          description: student
+          required: true
+          schema:
+            $ref: '#/definitions/Student'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /student/validateStu/{email}:
+    get:
+      tags:
+        - student-rest-controller
+      summary: getByIdEmployee
+      operationId: getByIdEmployeeUsingGET_3
+      produces:
+        - '*/*'
+      parameters:
+        - name: email
+          in: path
+          description: email
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /subject/allsub:
+    get:
+      tags:
+        - subject-rest-controller
+      summary: allSubject
+      operationId: allSubjectUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Subject'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /subject/byIdSubject/{stid}:
+    get:
+      tags:
+        - subject-rest-controller
+      summary: getByIdSubject
+      operationId: getByIdSubjectUsingGET_1
+      produces:
+        - '*/*'
+      parameters:
+        - name: stid
+          in: path
+          description: stid
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /subject/createSubject:
+    post:
+      tags:
+        - subject-rest-controller
+      summary: createStudent
+      operationId: createStudentUsingPOST_1
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: subject
+          description: subject
+          required: true
+          schema:
+            $ref: '#/definitions/Subject'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Subject'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /subject/deleteSubject/{subid}:
+    delete:
+      tags:
+        - subject-rest-controller
+      summary: updateSubject
+      operationId: updateSubjectUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: subid
+          in: path
+          description: subid
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+  /subject/updateSubject:
+    put:
+      tags:
+        - subject-rest-controller
+      summary: updateSubject
+      operationId: updateSubjectUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: subject
+          description: subject
+          required: true
+          schema:
+            $ref: '#/definitions/Subject'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /update:
+    post:
+      tags:
+        - student-controller
+      summary: update
+      operationId: updateUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: dob
+          in: query
+          required: false
+          type: string
+          format: date-time
+        - name: st_contact
+          in: query
+          required: false
+          type: string
+        - name: st_email
+          in: query
+          required: false
+          type: string
+        - name: st_firstName
+          in: query
+          required: false
+          type: string
+        - name: st_gender
+          in: query
+          required: false
+          type: string
+        - name: st_id
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: st_lastName
+          in: query
+          required: false
+          type: string
+        - name: st_password
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ModelAndView'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+definitions:
+  Admin:
+    type: object
+    properties:
+      admin_email:
+        type: string
+      admin_id:
+        type: integer
+        format: int32
+      admin_name:
+        type: string
+      admin_password:
+        type: string
+    title: Admin
+  ModelAndView:
+    type: object
+    properties:
+      empty:
+        type: boolean
+      model:
+        type: object
+      modelMap:
+        type: object
+        additionalProperties:
+          type: object
+      reference:
+        type: boolean
+      status:
+        type: string
+        enum:
+          - 100 CONTINUE
+          - 101 SWITCHING_PROTOCOLS
+          - 102 PROCESSING
+          - 103 CHECKPOINT
+          - 200 OK
+          - 201 CREATED
+          - 202 ACCEPTED
+          - 203 NON_AUTHORITATIVE_INFORMATION
+          - 204 NO_CONTENT
+          - 205 RESET_CONTENT
+          - 206 PARTIAL_CONTENT
+          - 207 MULTI_STATUS
+          - 208 ALREADY_REPORTED
+          - 226 IM_USED
+          - 300 MULTIPLE_CHOICES
+          - 301 MOVED_PERMANENTLY
+          - 302 FOUND
+          - 302 MOVED_TEMPORARILY
+          - 303 SEE_OTHER
+          - 304 NOT_MODIFIED
+          - 305 USE_PROXY
+          - 307 TEMPORARY_REDIRECT
+          - 308 PERMANENT_REDIRECT
+          - 400 BAD_REQUEST
+          - 401 UNAUTHORIZED
+          - 402 PAYMENT_REQUIRED
+          - 403 FORBIDDEN
+          - 404 NOT_FOUND
+          - 405 METHOD_NOT_ALLOWED
+          - 406 NOT_ACCEPTABLE
+          - 407 PROXY_AUTHENTICATION_REQUIRED
+          - 408 REQUEST_TIMEOUT
+          - 409 CONFLICT
+          - 410 GONE
+          - 411 LENGTH_REQUIRED
+          - 412 PRECONDITION_FAILED
+          - 413 PAYLOAD_TOO_LARGE
+          - 413 REQUEST_ENTITY_TOO_LARGE
+          - 414 URI_TOO_LONG
+          - 414 REQUEST_URI_TOO_LONG
+          - 415 UNSUPPORTED_MEDIA_TYPE
+          - 416 REQUESTED_RANGE_NOT_SATISFIABLE
+          - 417 EXPECTATION_FAILED
+          - 418 I_AM_A_TEAPOT
+          - 419 INSUFFICIENT_SPACE_ON_RESOURCE
+          - 420 METHOD_FAILURE
+          - 421 DESTINATION_LOCKED
+          - 422 UNPROCESSABLE_ENTITY
+          - 423 LOCKED
+          - 424 FAILED_DEPENDENCY
+          - 426 UPGRADE_REQUIRED
+          - 428 PRECONDITION_REQUIRED
+          - 429 TOO_MANY_REQUESTS
+          - 431 REQUEST_HEADER_FIELDS_TOO_LARGE
+          - 451 UNAVAILABLE_FOR_LEGAL_REASONS
+          - 500 INTERNAL_SERVER_ERROR
+          - 501 NOT_IMPLEMENTED
+          - 502 BAD_GATEWAY
+          - 503 SERVICE_UNAVAILABLE
+          - 504 GATEWAY_TIMEOUT
+          - 505 HTTP_VERSION_NOT_SUPPORTED
+          - 506 VARIANT_ALSO_NEGOTIATES
+          - 507 INSUFFICIENT_STORAGE
+          - 508 LOOP_DETECTED
+          - 509 BANDWIDTH_LIMIT_EXCEEDED
+          - 510 NOT_EXTENDED
+          - 511 NETWORK_AUTHENTICATION_REQUIRED
+      view:
+        $ref: '#/definitions/View'
+      viewName:
+        type: string
+    title: ModelAndView
+  Question:
+    type: object
+    properties:
+      answer:
+        type: string
+      op1:
+        type: string
+      op2:
+        type: string
+      op3:
+        type: string
+      op4:
+        type: string
+      qdescription:
+        type: string
+      question_id:
+        type: integer
+        format: int32
+      quiz:
+        $ref: '#/definitions/Quiz'
+    title: Question
+  Quiz:
+    type: object
+    properties:
+      maxMarks:
+        type: integer
+        format: int32
+      numberOfQuestions:
+        type: integer
+        format: int32
+      qid:
+        type: integer
+        format: int32
+      subject:
+        $ref: '#/definitions/Subject'
+      test_date:
+        type: string
+        format: date-time
+      title:
+        type: string
+    title: Quiz
+  Result:
+    type: object
+    properties:
+      result_id:
+        type: integer
+        format: int32
+      scored_marks:
+        type: string
+      student:
+        $ref: '#/definitions/Student'
+      subject:
+        $ref: '#/definitions/Subject'
+    title: Result
+  Student:
+    type: object
+    properties:
+      dob:
+        type: string
+        format: date-time
+      st_contact:
+        type: string
+      st_email:
+        type: string
+      st_firstName:
+        type: string
+      st_gender:
+        type: string
+      st_id:
+        type: integer
+        format: int32
+      st_lastName:
+        type: string
+      st_password:
+        type: string
+    title: Student
+  Subject:
+    type: object
+    properties:
+      subject_id:
+        type: integer
+        format: int32
+      subject_name:
+        type: string
+    title: Subject
+  View:
+    type: object
+    properties:
+      contentType:
+        type: string
+    title: View
